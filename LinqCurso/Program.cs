@@ -24,7 +24,13 @@ LinQueries queries = new LinQueries();
 //PrintValues(queries.JavaBooksOrderedByName());
 
 //Utilizando el operador OrderByDescending retornar todos los elementos que tengan más de 450 páginas, oedenados por número de páginas en forma descendente. 
-PrintValues(queries.BooksWithMorethan450PAgesOrderedByName());
+//PrintValues(queries.BooksWithMorethan450PAgesOrderedByName());
+
+//primeros 3 libros con fecha de publicación más reciente que estén categotizados en Java 
+//PrintValues(queries.ThreeMostRecentJavaBooks());
+
+//Seleccionar el tercer y cuarto libro de los que tengan más de 400 páginas 
+PrintValues(queries.ThirtdAndFourthBooksWithMoreThan400Pages());
 
 void PrintValues(IEnumerable<Book> booksList)
 {

@@ -32,7 +32,7 @@ namespace curso_linq
             return booksCollection;
         }
 
-        // Reto #1
+        // Reto #1 Where
         // utilizando el operador Where retirna los libros que fueron publicados después del año 2000
 
         public IEnumerable<Book> BooksReleasedAfter2000()
@@ -70,7 +70,7 @@ namespace curso_linq
             return booksWithMoreThan250Pages;
         }
 
-        //Operador All
+        //All
         //Los libros tienen status 
 
         public bool BooksHaveStatus()
@@ -81,7 +81,7 @@ namespace curso_linq
             return booksHaveStatus;
         }
 
-        //Operador Any 
+        //Any 
         //verifica si alguno de los libros fue publicado en 2005
 
         public bool AnyBookWasPublishedIn2005()
@@ -91,7 +91,7 @@ namespace curso_linq
             return anyBookWasPublishedIn2005;
         }
 
-        //Operador contains 
+        //Contains 
         //Utilizando el operador Contains retorna los elementos que pertenezcan a la categoría de Python. 
         public IEnumerable<Book> PythonBooks()
         {
@@ -137,5 +137,34 @@ namespace curso_linq
 
             return booksWithMorethan450PAgesOrderedByName;
         }
+
+        //Take 
+        //seleccionar los primeros 3 libros con fecha de publicación más reciente que estén categotizados en Java 
+
+        public IEnumerable<Book> ThreeMostRecentJavaBooks()
+        {
+            IEnumerable<Book> threeMostRecentJavaBooks;
+            threeMostRecentJavaBooks = booksCollection.Where(x => x.categories.Contains("Java")).OrderByDescending(x => x.publishedDate).Take(3);
+
+            IEnumerable<Book> threeMostRecentJavaBookss = (from b in booksCollection
+                                                          where b.categories.Contains("Java")
+                                                          orderby b.publishedDate descending
+                                                          select b).Take(3);
+            return threeMostRecentJavaBooks;
+        }
+
+        //Skip 
+        //Seleccionar el tercer y cuarto libro de los que tengan más de 400 páginas 
+
+        public IEnumerable<Book> ThirtdAndFourthBooksWithMoreThan400Pages()
+        {
+            IEnumerable<Book> ThirtdAndFourthBooksWithMoreThan400Pages;
+            ThirtdAndFourthBooksWithMoreThan400Pages = booksCollection
+                .Where(x => x.pageCount > 400)
+                .OrderBy(x => x.pageCount)
+                .Take(4).Skip(2);
+            return ThirtdAndFourthBooksWithMoreThan400Pages;
+        }
+
     }
 }
