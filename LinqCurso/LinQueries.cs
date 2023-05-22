@@ -68,7 +68,27 @@ namespace curso_linq
                                                            
 
             return booksWithMoreThan250Pages;
-        } 
+        }
 
+        //Operador All
+        //Los libros tienen status 
+
+        public bool BooksHaveStatus()
+        {
+            bool BooksHaveStatus;
+            BooksHaveStatus = booksCollection.All(x => x.status != string.Empty);
+
+            return BooksHaveStatus;
+        }
+
+        //Operador Any 
+        //verifica si alguno de los libros fue publicado en 2005
+
+        public bool AnyBookWasPublishedIn2005()
+        {
+            bool AnyBookWasPublishedIn2005;
+            AnyBookWasPublishedIn2005 = booksCollection.Any(x => x.publishedDate.Year == 2005);
+            return AnyBookWasPublishedIn2005;
+        }
     }
 }

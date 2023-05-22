@@ -9,8 +9,13 @@ LinQueries queries = new LinQueries();
 //PrintValues(queries.BooksReleasedAfter2000());
 
 //Libros que tienen mas de 250 paginas y contienen "in action" en su titulo 
+//PrintValues(queries.BooksWithMoreThan250Pages());
 
-PrintValues(queries.BooksWithMoreThan250Pages());
+//Libros que tienen estatus 
+//Console.WriteLine($" ¿Todos los libros tienen status? : {queries.BooksHaveStatus()}");
+
+//Algun libro fue publicado en 2005?
+Console.WriteLine($" ¿Algun libro fue publicado en 2005?? : {queries.AnyBookWasPublishedIn2005()}");
 
 void PrintValues(IEnumerable<Book> booksList)
 {
