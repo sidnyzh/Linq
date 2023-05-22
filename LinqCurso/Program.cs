@@ -15,8 +15,11 @@ LinQueries queries = new LinQueries();
 //Console.WriteLine($" ¿Todos los libros tienen status? : {queries.BooksHaveStatus()}");
 
 //Algun libro fue publicado en 2005?
-Console.WriteLine($" ¿Algun libro fue publicado en 2005?? : {queries.AnyBookWasPublishedIn2005()}");
+//Console.WriteLine($" ¿Algun libro fue publicado en 2005?? : {queries.AnyBookWasPublishedIn2005()}");
 
+//Elementos que pertenezcan a la categoría de Python
+
+PrintValues(queries.PythonBooks());
 void PrintValues(IEnumerable<Book> booksList)
 {
     Console.WriteLine("{0, -70} {1,15} {2,11}", "Titulo", "N. Paginas", "Fecha de publicación");

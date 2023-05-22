@@ -75,10 +75,10 @@ namespace curso_linq
 
         public bool BooksHaveStatus()
         {
-            bool BooksHaveStatus;
-            BooksHaveStatus = booksCollection.All(x => x.status != string.Empty);
+            bool booksHaveStatus;
+            booksHaveStatus = booksCollection.All(x => x.status != string.Empty);
 
-            return BooksHaveStatus;
+            return booksHaveStatus;
         }
 
         //Operador Any 
@@ -86,9 +86,19 @@ namespace curso_linq
 
         public bool AnyBookWasPublishedIn2005()
         {
-            bool AnyBookWasPublishedIn2005;
-            AnyBookWasPublishedIn2005 = booksCollection.Any(x => x.publishedDate.Year == 2005);
-            return AnyBookWasPublishedIn2005;
+            bool anyBookWasPublishedIn2005;
+            anyBookWasPublishedIn2005 = booksCollection.Any(x => x.publishedDate.Year == 2005);
+            return anyBookWasPublishedIn2005;
+        }
+
+        //Operador contains 
+        //Utilizando el operador Contains retorna los elementos que pertenezcan a la categoría de Python. 
+        public IEnumerable<Book> PythonBooks()
+        {
+            IEnumerable<Book> pythonBooks;
+
+            pythonBooks = booksCollection.Where(x => x.categories.Contains("Python"));
+            return pythonBooks;
         }
     }
 }
