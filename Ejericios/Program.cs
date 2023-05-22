@@ -19,7 +19,14 @@ animales.Add(new Animal() { Nombre = "Gallina", Color = "Blanco" });
 var reg = new Regex("^[aeiouAEIOU].*");
 var starsWithValueAndItsColorIsGreen = animales.Where(x => x.Color.Equals("Verde") && reg.IsMatch(x.Nombre));
 
-foreach (var item in starsWithValueAndItsColorIsGreen)
-{
-    Console.WriteLine(item.Nombre);
-}
+//foreach (var item in starsWithValueAndItsColorIsGreen)
+//{
+//    Console.WriteLine(item.Nombre);
+//}
+
+// Retorna los elementos de la colleción animal ordenados por nombre
+
+
+var orderByName = animales.OrderBy(x => x.Nombre);
+
+foreach (var animal in orderByName) Console.WriteLine(animal.Nombre); 

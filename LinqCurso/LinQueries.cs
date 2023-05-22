@@ -76,7 +76,7 @@ namespace curso_linq
         public bool BooksHaveStatus()
         {
             bool booksHaveStatus;
-            booksHaveStatus = booksCollection.All(x => x.status != string.Empty);
+            booksHaveStatus = booksCollection.All(x => x.status != string.Empty);   
 
             return booksHaveStatus;
         }
@@ -97,8 +97,45 @@ namespace curso_linq
         {
             IEnumerable<Book> pythonBooks;
 
-            pythonBooks = booksCollection.Where(x => x.categories.Contains("Python"));
+            //pythonBooks = booksCollection.Where(x => x.categories.Contains("Python"));
+            pythonBooks = from b in booksCollection
+                          where b.categories.Contains("Python") 
+                          select b;   
+
             return pythonBooks;
+        }
+
+        //OrderBy
+        //Utilizando el operador OrderBy retornar todos los elementos que sean de la categoría de Java ordenados por nombre. 
+
+        public IEnumerable<Book> JavaBooksOrderedByName()
+        {
+            IEnumerable<Book> javaBooksOrderedByName;
+
+            //javaBooksOrderedByName = booksCollection.Where(x => x.categories.Contains("Java")).OrderBy(x => x.title);
+            
+            javaBooksOrderedByName = from b in booksCollection
+                                     where b.categories.Contains("Java")
+                                     orderby b.title
+                                     select b;
+
+
+            return javaBooksOrderedByName;
+        }
+
+        //OrderByDescending
+        //Utilizando el operador OrderByDescending retornar todos los elementos que tengan más de 450 páginas, oedenados por número de páginas en forma descendente. 
+
+        public IEnumerable<Book> BooksWithMorethan450PAgesOrderedByName()
+        {
+            IEnumerable<Book> booksWithMorethan450PAgesOrderedByName;
+            //booksWithMorethan450PAgesOrderedByName = booksCollection.Where(x => x.pageCount >450).OrderByDescending(x => x.pageCount);
+            booksWithMorethan450PAgesOrderedByName= from b in booksCollection
+                                                    where b.pageCount > 450
+                                                    orderby b.pageCount descending
+                                                    select b;
+
+            return booksWithMorethan450PAgesOrderedByName;
         }
     }
 }
