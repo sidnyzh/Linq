@@ -30,7 +30,16 @@ LinQueries queries = new LinQueries();
 //PrintValues(queries.ThreeMostRecentJavaBooks());
 
 //Seleccionar el tercer y cuarto libro de los que tengan más de 400 páginas 
-PrintValues(queries.ThirtdAndFourthBooksWithMoreThan400Pages());
+//PrintValues(queries.ThirtdAndFourthBooksWithMoreThan400Pages());
+
+//Número de libros que tienen entre 200 y 500 páginas
+//Console.WriteLine(queries.NumberOfBooksWithPAgesBetween200And500());
+
+//Fecha de publicación menor 
+Console.WriteLine(queries.MinpublishedDate());
+
+//Cantidad de páginas del libro con mayor número de páginas en la colección 
+Console.WriteLine(queries.MaxPagesNumber());
 
 void PrintValues(IEnumerable<Book> booksList)
 {

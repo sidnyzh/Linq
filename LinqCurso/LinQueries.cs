@@ -156,7 +156,7 @@ namespace curso_linq
         //Skip 
         //Seleccionar el tercer y cuarto libro de los que tengan más de 400 páginas 
 
-        public IEnumerable<Book> ThirtdAndFourthBooksWithMoreThan400Pages()
+        internal IEnumerable<Book> ThirtdAndFourthBooksWithMoreThan400Pages()
         {
             IEnumerable<Book> ThirtdAndFourthBooksWithMoreThan400Pages;
             ThirtdAndFourthBooksWithMoreThan400Pages = booksCollection
@@ -164,6 +164,46 @@ namespace curso_linq
                 .OrderBy(x => x.pageCount)
                 .Take(4).Skip(2);
             return ThirtdAndFourthBooksWithMoreThan400Pages;
+        }
+
+        //Count
+        //Número de libros que tienen entre 200 y 500 páginas 
+
+        internal int NumberOfBooksWithPAgesBetween200And500()
+        {
+            int numberOfBooksWithPAgesBetween200And500 = booksCollection.Where(x => x.pageCount >=200 && x.pageCount <= 500 ).Count();
+
+            //Query Expression
+            int numberOfBooksWithPAgesBetween200And5002 = (from b in booksCollection
+                                                          where b.pageCount >= 200 && b.pageCount <= 500
+                                                          select b).Count();
+                                                         
+
+            return numberOfBooksWithPAgesBetween200And5002;
+        }
+
+        //Min 
+        //Fecha de publicación menor 
+
+        internal DateTime MinpublishedDate()
+        {
+            DateTime minpublishedDate;
+
+            minpublishedDate = booksCollection.Min(x => x.publishedDate);
+
+            return minpublishedDate;
+        }
+
+        //Min 
+        //Cantidad de páginas del libro con mayor número de páginas en la colección 
+
+        internal int MaxPagesNumber()
+        {
+            int maxPagesNumber;
+
+            maxPagesNumber = booksCollection.Max(x => x.pageCount);
+
+            return maxPagesNumber;
         }
 
     }
