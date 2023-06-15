@@ -36,10 +36,18 @@ LinQueries queries = new LinQueries();
 //Console.WriteLine(queries.NumberOfBooksWithPAgesBetween200And500());
 
 //Fecha de publicación menor 
-Console.WriteLine(queries.MinpublishedDate());
+//Console.WriteLine(queries.MinpublishedDate());
 
 //Cantidad de páginas del libro con mayor número de páginas en la colección 
-Console.WriteLine(queries.MaxPagesNumber());
+//Console.WriteLine(queries.MaxPagesNumber());
+
+//Libro con menor número de páginas mayor a 0
+string book = queries.BookWithLessPages().title;
+Console.WriteLine(book);
+
+//Libro con fecha de publicación más reciente 
+Console.WriteLine(queries.MostRecentBook().title);
+
 
 void PrintValues(IEnumerable<Book> booksList)
 {

@@ -205,6 +205,33 @@ namespace curso_linq
 
             return maxPagesNumber;
         }
+        //MInBy
+        //Libro que tenga la menor cantidad de páginas mayor a 0 
+
+        internal Book BookWithLessPages()
+        {
+            Book bookWithLessPages;
+
+            bookWithLessPages = booksCollection.Where(x => x.pageCount > 0).MinBy(x => x.pageCount )!;
+
+            return bookWithLessPages;
+             
+        }
+
+        //MaxBy 
+        //libro con la fecha de publicación más reciente 
+
+        internal Book MostRecentBook() 
+        {
+            Book mostRecentBook;
+
+            mostRecentBook = booksCollection.MaxBy(x => x.publishedDate);
+
+            return mostRecentBook;
+            ;
+        }
+
+         
 
     }
 }
