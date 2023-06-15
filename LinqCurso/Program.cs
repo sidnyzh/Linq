@@ -42,11 +42,17 @@ LinQueries queries = new LinQueries();
 //Console.WriteLine(queries.MaxPagesNumber());
 
 //Libro con menor número de páginas mayor a 0
-string book = queries.BookWithLessPages().title;
-Console.WriteLine(book);
+//string book = queries.BookWithLessPages().title;
+//Console.WriteLine(book);
 
 //Libro con fecha de publicación más reciente 
-Console.WriteLine(queries.MostRecentBook().title);
+//Console.WriteLine(queries.MostRecentBook().title);
+
+//Suma de la cantidad de páginas de todos los libros que tengan entre 0 y 500
+//Console.WriteLine(queries.CountPages());
+
+//Retornar el titulo de los libros publicados despúes del 2015
+Console.WriteLine( queries.BookstitleReleasesAfter2015());
 
 
 void PrintValues(IEnumerable<Book> booksList)

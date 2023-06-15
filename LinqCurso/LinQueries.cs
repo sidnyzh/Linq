@@ -225,13 +225,49 @@ namespace curso_linq
         {
             Book mostRecentBook;
 
-            mostRecentBook = booksCollection.MaxBy(x => x.publishedDate);
+            mostRecentBook = booksCollection.MaxBy(x => x.publishedDate)!;
 
             return mostRecentBook;
-            ;
+            
         }
 
-         
+        //Sum
+        //Suma de la cantidad de páginas de todos los libros que tengan entre 0 y 500
+
+        internal int CountPages()
+        {
+            int CountPages;
+
+            CountPages = booksCollection.Where(x => x.pageCount >= 0  && x.pageCount <=500).Sum(x => x.pageCount);
+
+            return CountPages;
+
+        }
+
+        //Agregate
+        //Retornar el titulo de los libros publicados despúes del 2015
+
+        internal string BookstitleReleasesAfter2015()
+        {
+            string BookstitleReleasesAfter2015;
+            BookstitleReleasesAfter2015 = booksCollection.Where(x => x.publishedDate.Year > 2015)
+                // la semilla representa un string que sería el valor inicial 
+                .Aggregate("", (titulosLibros, next) =>
+            {
+                if (titulosLibros != string.Empty)
+                {
+                    titulosLibros += "- " + next.title;
+                }
+                else
+                {
+                    titulosLibros += next.title;
+                }
+
+                return titulosLibros;
+            });
+
+            return BookstitleReleasesAfter2015;
+        }
 
     }
 }
