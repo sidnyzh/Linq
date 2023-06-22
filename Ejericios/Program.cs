@@ -29,4 +29,25 @@ var starsWithValueAndItsColorIsGreen = animales.Where(x => x.Color.Equals("Verde
 
 var orderByName = animales.OrderBy(x => x.Nombre);
 
-foreach (var animal in orderByName) Console.WriteLine(animal.Nombre); 
+foreach (var animal in orderByName) Console.WriteLine(animal.Nombre);
+
+// Retorna los datos de la colleción Animales agrupada por color 
+
+void AnimalesAgrupadoPorColor()
+{
+    IEnumerable<IGrouping<string, Animal>> animalesAgrupadosPorColor = animales.GroupBy( x => x.Color);
+    
+    foreach (var grupo in animalesAgrupadosPorColor)
+    {
+        Console.WriteLine(grupo.Key);
+        
+        foreach(var animal in grupo)
+        {
+            Console.WriteLine($" Nombre: {animal.Nombre} Color: {animal.Color}");
+        }
+    }
+}
+
+AnimalesAgrupadoPorColor();
+
+
