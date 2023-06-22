@@ -289,5 +289,17 @@ namespace curso_linq
             var gropedBooks = booksCollection.Where(x=> x.publishedDate.Year >= 2000).GroupBy(x => x.publishedDate.Year);
             return gropedBooks;
         }
+
+        //Lookup
+        //Retorna un diccionario que permita consultar los libros de acuierdo a la letra con la que inicia el titulo del libro 
+
+        internal ILookup<char, Book> DictionaryOfBooksByLetter() 
+        {
+            ILookup<char, Book> dictionary;
+            //se obtiene el primer caracter deltitulo y se agrupa todo el objeto libro 
+            dictionary = booksCollection.ToLookup(x => x.title[0], x => x);
+            return dictionary;
+        }
+
     }
 }

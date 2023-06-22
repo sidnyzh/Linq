@@ -58,7 +58,10 @@ LinQueries queries = new LinQueries();
 //Console.WriteLine(queries.tittleCharacteresAverage());
 
 //Retornar todos los libros que fueron publicados a partir del 2000, agrupados por año
-PrintGroup(queries.GroupByYear());
+//PrintGroup(queries.GroupByYear());
+
+//Retorna un diccionario que permita consultar los libros de acuierdo a la letra con la que inicia el titulo del libro 
+printDictionary(queries.DictionaryOfBooksByLetter(), 'A');
 
 void PrintValues(IEnumerable<Book> booksList)
 {
@@ -80,6 +83,23 @@ void PrintGroup(IEnumerable<IGrouping<int, Book>> ListadeLibros)
         foreach (var item in grupo)
         {
             Console.WriteLine("{0,-60} {1, 15} {2, 15}", item.title, item.pageCount, item.publishedDate.Date.ToShortDateString());
+        }
+    }
+}
+
+void printDictionary(ILookup<char, Book> listBooks, char letter)
+{
+    char letterUpper = Char.ToUpper(letter);
+    if (listBooks[letterUpper].Count() == 0)
+    {
+        Console.WriteLine($"No hay libros que inicien con la letra '{letterUpper}'");
+    }
+    else
+    {
+        Console.WriteLine("{0, -60} {1, 15} {2, 15}\n", "Título", "Nro. Páginas", "Fecha de Publicación");
+        foreach (var book in listBooks[letterUpper])
+        {
+            Console.WriteLine("{0, -60} {1, 15} {2, 15}", book.title, book.pageCount, book.publishedDate.ToShortDateString());
         }
     }
 }
