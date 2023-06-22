@@ -269,5 +269,16 @@ namespace curso_linq
             return BookstitleReleasesAfter2015;
         }
 
+        //Average
+        //Promedio de caracteres que tienen los libros en sus titulos 
+
+        internal double tittleCharacteresAverage()
+        {
+            //Esta función puede devolver un double
+            double average;
+            average = booksCollection.Average(x => x.title.Length);
+            return average;
+        }
+
     }
 }

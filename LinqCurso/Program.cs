@@ -52,8 +52,10 @@ LinQueries queries = new LinQueries();
 //Console.WriteLine(queries.CountPages());
 
 //Retornar el titulo de los libros publicados despúes del 2015
-Console.WriteLine( queries.BookstitleReleasesAfter2015());
+//Console.WriteLine( queries.BookstitleReleasesAfter2015());
 
+//Promedio de caracteres que tienen los libros en sus titulos 
+Console.WriteLine(queries.tittleCharacteresAverage());
 
 void PrintValues(IEnumerable<Book> booksList)
 {
