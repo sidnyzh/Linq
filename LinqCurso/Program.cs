@@ -55,7 +55,10 @@ LinQueries queries = new LinQueries();
 //Console.WriteLine( queries.BookstitleReleasesAfter2015());
 
 //Promedio de caracteres que tienen los libros en sus titulos 
-Console.WriteLine(queries.tittleCharacteresAverage());
+//Console.WriteLine(queries.tittleCharacteresAverage());
+
+//Retornar todos los libros que fueron publicados a partir del 2000, agrupados por año
+PrintGroup(queries.GroupByYear());
 
 void PrintValues(IEnumerable<Book> booksList)
 {
@@ -64,6 +67,20 @@ void PrintValues(IEnumerable<Book> booksList)
     foreach (var book in booksList)
     {
         Console.WriteLine("{0, -70} {1,15} {2,15}/n", book.title, book.pageCount, book.publishedDate.ToShortDateString());
+    }
+}
+
+void PrintGroup(IEnumerable<IGrouping<int, Book>> ListadeLibros)
+{
+    foreach (var grupo in ListadeLibros)
+    {
+        Console.WriteLine("");
+        Console.WriteLine($"Grupo: {grupo.Key}");
+        Console.WriteLine("{0,-60} {1, 15} {2, 15}\n", "Titulo", "N. Paginas", "Fecha publicacion");
+        foreach (var item in grupo)
+        {
+            Console.WriteLine("{0,-60} {1, 15} {2, 15}", item.title, item.pageCount, item.publishedDate.Date.ToShortDateString());
+        }
     }
 }
 

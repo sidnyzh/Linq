@@ -275,10 +275,19 @@ namespace curso_linq
         internal double tittleCharacteresAverage()
         {
             //Esta función puede devolver un double
-            double average;
+            double average; 
             average = booksCollection.Average(x => x.title.Length);
             return average;
         }
 
+        //GroupBy
+        //Retornar todos los libros que fueron publicados a partir del 2000, agrupados por año 
+
+        //El int, corresponde al tipo de dato por el que será agrupado, en este caso, el año 
+        internal IEnumerable<IGrouping<int,Book>> GroupByYear()
+        {
+            var gropedBooks = booksCollection.Where(x=> x.publishedDate.Year >= 2000).GroupBy(x => x.publishedDate.Year);
+            return gropedBooks;
+        }
     }
 }
