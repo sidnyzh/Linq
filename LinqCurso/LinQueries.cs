@@ -301,5 +301,22 @@ namespace curso_linq
             return dictionary;
         }
 
+
+        //Obtén una colección que tenga todos los libros con más de 500 páginas y otra que contenga los libros publicados después del 2005. 
+        //Utilizando la cláusula Join, retorna los libros que estén en ambascolecciones.
+
+        internal IEnumerable<Book> BooksReleasedAfter2005WithMoreThan500PAges()
+        {
+            IEnumerable<Book> booksReleasedAfter2005WithMoreThan500PAges;
+
+            IEnumerable<Book> BooksReleasedAfter2005 = booksCollection.Where(x => x.publishedDate.Year >= 2005);
+            IEnumerable<Book> BooksWithMoreThan500PAges = booksCollection.Where(x => x.pageCount > 500);
+
+            //Se deberia comparar por ID, pero en este caso, el único dato único es el ID
+            booksReleasedAfter2005WithMoreThan500PAges = BooksReleasedAfter2005.Join(BooksWithMoreThan500PAges, x => x.title, p => p.title, (x, p) => x);
+
+            return booksReleasedAfter2005WithMoreThan500PAges;
+        }
+
     }
 }

@@ -61,8 +61,13 @@ LinQueries queries = new LinQueries();
 //PrintGroup(queries.GroupByYear());
 
 //Retorna un diccionario que permita consultar los libros de acuierdo a la letra con la que inicia el titulo del libro 
-printDictionary(queries.DictionaryOfBooksByLetter(), 'A');
+//printDictionary(queries.DictionaryOfBooksByLetter(), 'A');
 
+//Libros filtrados con la clausula join 
+
+PrintValues(queries.BooksReleasedAfter2005WithMoreThan500PAges());
+
+#region Methods to print
 void PrintValues(IEnumerable<Book> booksList)
 {
     Console.WriteLine("{0, -70} {1,15} {2,11}", "Titulo", "N. Paginas", "Fecha de publicación");
@@ -104,3 +109,4 @@ void printDictionary(ILookup<char, Book> listBooks, char letter)
     }
 }
 
+#endregion
